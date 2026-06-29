@@ -1,4 +1,3 @@
 FROM mitmproxy/mitmproxy:latest
 EXPOSE 8080
-# نستخدم وضع socks لتمرير البيانات عبر الـ TCP Proxy
-CMD ["mitmdump", "--mode", "socks5", "--set", "block_global=false"]
+CMD ["mitmdump", "--mode", "regular", "--set", "listen_host=0.0.0.0", "--set", "listen_port=8080", "--set", "block_global=false"]
