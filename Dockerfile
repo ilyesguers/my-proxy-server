@@ -1,4 +1,8 @@
 FROM mitmproxy/mitmproxy:latest
-EXPOSE 8080
-# التعديل هنا: نحدد الـ listen_port ليكون 8080
-CMD ["mitmdump", "--set", "block_global=false", "--set", "listen_port=8080"]
+
+# المنفذ 443 هو الافتراضي لـ HTTPS
+EXPOSE 443
+
+# --mode regular: وضع البروكسي العادي
+# --listen-port 443: الاستماع على المنفذ المطلوب
+CMD ["mitmdump", "--mode", "regular", "--listen-port", "443", "--set", "block_global=false"]
